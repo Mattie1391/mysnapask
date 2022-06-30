@@ -13,10 +13,8 @@ class CoursesController < ApplicationController
     @course = Course.new(course_params)
 
     if @course.save
-      # 成功
       redirect_to courses_path, notice: "新增課程成功!"
     else
-      # 失敗
       render :new
     end
   end
