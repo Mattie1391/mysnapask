@@ -1,0 +1,11 @@
+<%= simple_form_for(course) do |f| %>
+  <%= f.input :name, label: "名稱" %>
+  <%= f.input :price, label: "價格" %>
+  <%= f.input :description, label: "內容描述" %>
+  <%= f.input :url, label: "網址" %>
+  <%= f.input :duration, label: "期限" %>
+  <%= f.input :status, label: "狀態" %>
+  <%= f.input :created_at, label: "創建時間" %>
+  <%= f.input :updated_at, label: "更新時間" %>
+  <%= f.submit %>
+<% end %>
