@@ -11,11 +11,15 @@
 
   <body>
     <div class="container">
-      <% if current_user %>
-       <li><%= link_to '登出', destroy_user_session_path, method: :delete, class:'btn' %></li>
+      <% if current_admin %>
+        <li><%= link_to '管理者登出', destroy_admin_session_path, method: :delete, class:'btn' %></li>
+      <% elsif current_user %>
+        <li><%= link_to '使用者登出', destroy_user_session_path, method: :delete, class:'btn' %></li>
       <% else %>
-        <li><%= link_to '註冊', new_user_registration_path, class:'btn' %></li>
-        <li><%= link_to '登入', new_user_session_path, class:'btn' %></li>
+        <li><%= link_to '管理者註冊', new_admin_registration_path, class:'btn' %></li>
+        <li><%= link_to '管理者登入', new_admin_session_path, class:'btn' %></li>
+        <li><%= link_to '使用者註冊', new_user_registration_path, class:'btn' %></li>
+        <li><%= link_to '使用者登入', new_user_session_path, class:'btn' %></li>
       <% end %>
       <%= yield %>
     </div>
