@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :find_course, only: [:edit, :update, :destroy]
+  before_action :find_course, only: [:edit, :update, :destroy, :show]
 
   def index
     @courses = Course.all
@@ -35,6 +35,9 @@ class CoursesController < ApplicationController
   def destroy
     @course.destroy if @course
     redirect_to courses_path, notice: "課程資料已刪除!"
+  end
+
+  def show
   end
 
   private
