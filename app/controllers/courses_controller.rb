@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :find_course, only: [:edit, :update, :destroy, :show, :mycourses, :purchasing]
+  before_action :find_course, only: [:edit, :update, :destroy, :show, :purchasing]
 
   def index
     @courses = Course.all
