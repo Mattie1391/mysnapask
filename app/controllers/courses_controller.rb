@@ -24,10 +24,8 @@ class CoursesController < ApplicationController
 
   def update
     if @course.update(course_params)
-      # 成功
-      redirect_to courses_path, notice: "資料更新成功!"
+      redirect_to courses_path, notice: "課程更新成功!"
     else
-      # 失敗
       render :edit
     end
   end

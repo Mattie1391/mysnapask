@@ -1,6 +1,8 @@
 <h1>課程列表</h1>
 
-<%= link_to "新增課程", new_course_path %>
+<% if current_admin %>
+  <%= link_to "新增課程", new_course_path %>
+<% end %>
 
 <table class="table">
   <thead>
@@ -9,10 +11,12 @@
       <td>課程價格</td>
       <td>課程內容描述</td>
       <td>課程網址</td>
-      <td>課程期限</td>
-      <td>課程狀態</td>
-      <td>課程創建時間</td>
-      <td>課程更新時間</td>
+      <td>課程期限(天)</td>
+      <% if current_admin %>
+        <td>課程狀態</td>
+        <td>課程創建時間</td>
+        <td>課程更新時間</td>
+      <% end %>
     </tr>
   </thead>
   <tbody>
@@ -28,10 +32,23 @@
         <td><%= course.created_at %></td>
         <td><%= course.updated_at %></td>
         <td>
-            <%= link_to "編輯", edit_course_path(course) %>
-            <%= link_to "刪除", course_path(course), method: "delete", data: { confirm: "確認刪除" } %>
+          <%= link_to "編輯", edit_course_path(course) %>
+          <%= link_to "刪除", course_path(course), method: "delete", data: { confirm: "確認刪除" } %>
         </td>
       </tr>
+      <% end %>
+    <% end %>
+    <% if current_user %>
+      <% @courses.each do |course| %>
+        <% if course.status==='已上架' %>
+          <tr>
+            <td><%= link_to course.name, course_path(course) %></td>
+            <td><%= course.price %></td>
+            <td><%= course.description %></td>
+            <td><%= course.url %></td>
+            <td><%= course.duration %></td>
+          </tr>
+        <% end %>
       <% end %>
     <% end %>
   </tbody>
