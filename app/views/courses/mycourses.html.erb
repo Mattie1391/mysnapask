@@ -5,7 +5,7 @@
       <td>課程價格</td>
       <td>課程內容描述</td>
       <td>課程網址</td>
-      <td>課程期限(天)</td>
+      <td>到期日</td>
     </tr>
   </thead>
   <tbody>
@@ -16,7 +16,7 @@
           <td><%= course.price %></td>
           <td><%= course.description %></td>
           <td><%= course.url %></td>
-          <td><%= course.duration %></td>
+          <td><%= course.created_at + course.duration.day %></td>
         </tr>
       <% end %>
     <% end %>
