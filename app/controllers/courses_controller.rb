@@ -44,6 +44,6 @@ class CoursesController < ApplicationController
   end
 
   def find_course
-    @course = Course.find_by(id: params[:id])
+    @course = Course.friendly.find(params[:id])
   end
 end
