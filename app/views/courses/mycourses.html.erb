@@ -1,0 +1,24 @@
+<table class="table">
+  <thead>
+    <tr>
+      <td>課程名稱</td>
+      <td>課程價格</td>
+      <td>課程內容描述</td>
+      <td>課程網址</td>
+      <td>課程期限(天)</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @courses.each do |course| %>
+      <% if current_user.purchased.include?(course.id) && course.status === '已上架' %>
+        <tr>
+          <td><%= link_to course.name, course_path(course) %></td>
+          <td><%= course.price %></td>
+          <td><%= course.description %></td>
+          <td><%= course.url %></td>
+          <td><%= course.duration %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

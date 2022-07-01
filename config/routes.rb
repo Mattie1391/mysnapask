@@ -4,5 +4,8 @@ Rails.application.routes.draw do
 
   resources :courses
 
+  get 'users/mycourses', to: 'courses#mycourses', as: 'mycourses_course'
+  patch 'users/purchasing', to: 'courses#purchasing', as: 'purchasing_course'
+
   root 'homepage#index'
 end

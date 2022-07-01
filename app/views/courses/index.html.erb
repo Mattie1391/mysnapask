@@ -40,13 +40,23 @@
     <% end %>
     <% if current_user %>
       <% @courses.each do |course| %>
-        <% if course.status==='已上架' %>
+        <% if course.status === '已上架' %>
           <tr>
             <td><%= link_to course.name, course_path(course) %></td>
             <td><%= course.price %></td>
             <td><%= course.description %></td>
             <td><%= course.url %></td>
             <td><%= course.duration %></td>
+            <% if current_user.purchased.include?(course.id) %>
+              <td>已購買</td>
+            <% else %>
+              <td>
+                <%= form_with(model: course, url: purchasing_course_path(course), method: "patch") do |form| %>
+                    <% form.label :purchasing %>
+                    <%= form.submit "購買" %>
+                <% end %>
+              </td>
+            <% end %>
           </tr>
         <% end %>
       <% end %>

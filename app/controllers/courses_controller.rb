@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :find_course, only: [:edit, :update, :destroy, :show]
+  before_action :find_course, only: [:index, :edit, :update, :destroy, :show]
 
   def index
     @courses = Course.all
@@ -36,6 +36,18 @@ class CoursesController < ApplicationController
   end
 
   def show
+  end
+
+  def mycourses
+    @courses = Course.all
+  end
+
+  def purchasing
+    @courses = Course.all
+    if !current_user.purchased.include?(@course.id) || current_user.purchased.empty?
+      current_user.update(purchased: (current_user.purchased << @course.id))
+      redirect_to courses_path, notice: "課程購買成功!"
+    end 
   end
 
   private

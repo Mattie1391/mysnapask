@@ -40,7 +40,7 @@ gem 'sassc-rails', '>= 2.1.0'
 gem 'jquery-rails'
 gem 'simple_form'
 gem 'devise', '~> 4.8.1'
-gem "rails-i18n"
+gem 'rails-i18n'
 gem 'friendly_id', '~> 5.4.0'
 
 
