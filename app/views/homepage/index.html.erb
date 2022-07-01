@@ -1,3 +1,6 @@
 <h1>Snapask官網</h1>
-
-<%= link_to '所有課程', courses_path, class:'btn' %>
+<% if current_admin %>
+  <%= link_to '所有課程', courses_path, class:'btn' %>
+<% elsif current_user %>
+  <%= link_to '購買課程', courses_path, class:'btn' %>  
+<% end %>
